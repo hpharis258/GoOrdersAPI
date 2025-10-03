@@ -1,7 +1,9 @@
 package main
 import (
 	"fmt"
-	"github.com/hpharis258/GoOrdersAPI/application"
+	"context"
+	"github.com/hpharis258/orders-api/application"
+	"github.com/redis/go-redis/v9"
 )
 
 func main(){
