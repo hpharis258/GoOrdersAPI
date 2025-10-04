@@ -1,15 +1,19 @@
 package main
+
 import (
-	"fmt"
 	"context"
+	"fmt"
+	"os"
+	"os/signal"
+
 	"github.com/hpharis258/orders-api/application"
-	"github.com/redis/go-redis/v9"
 )
 
-func main(){
+func main() {
 	app := application.New()
-	if err := app.Start(context.TODO()); 
-	err != nil {
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
+	defer cancel()
+	if err := app.Start(ctx); err != nil {
 		fmt.Println("Error starting application:", err)
 	}
 }
