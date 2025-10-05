@@ -16,9 +16,9 @@ type App struct {
 
 func New() *App {
 	app := &App{
-		Router: loadRoutes(),
-		rdb:    redis.NewClient(&redis.Options{Addr: "localhost:6379"}), // Example Redis client
+		rdb: redis.NewClient(&redis.Options{Addr: "localhost:6379"}), // Example Redis client
 	}
+	app.loadRoutes()
 	return app
 }
 
